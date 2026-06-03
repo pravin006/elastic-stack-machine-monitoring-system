@@ -1,0 +1,33 @@
+# Kibana server configuration
+
+# Port Kibana will run on
+server.port: 5601
+
+# Allow access from other machines
+server.host: "0.0.0.0"
+
+# Display name for the Kibana instance
+server.name: "mykibana"
+
+# Elasticsearch server used by Kibana
+elasticsearch.hosts: ["http://<ELASTICSEARCH_SERVER_IP>:9200"]
+
+# Optional: only needed if Elasticsearch security/authentication is enabled
+# elasticsearch.username: "kibana_system"
+# elasticsearch.password: "<KIBANA_SYSTEM_PASSWORD>"
+
+# Store Kibana logs in a file
+logging:
+  appenders:
+    file:
+      type: file
+      fileName: /var/log/kibana/kibana.log
+      layout:
+        type: json
+  root:
+    appenders:
+      - default
+      - file
+
+# Process ID file
+pid.file: /run/kibana/kibana.pid

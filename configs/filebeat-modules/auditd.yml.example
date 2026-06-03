@@ -1,0 +1,9 @@
+# Filebeat auditd module
+
+- module: auditd
+
+  log:
+    enabled: true
+
+    # Optional custom paths
+    # var.paths:

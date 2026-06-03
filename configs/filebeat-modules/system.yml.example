@@ -1,0 +1,17 @@
+# Filebeat system module
+
+- module: system
+
+  # System logs
+  syslog:
+    enabled: true
+
+    # Optional custom paths
+    # var.paths:
+
+  # Authorization logs
+  auth:
+    enabled: true
+
+    # Optional custom paths
+    # var.paths:

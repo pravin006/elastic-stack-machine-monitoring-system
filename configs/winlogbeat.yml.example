@@ -1,0 +1,25 @@
+# Winlogbeat configuration
+
+# Collect Windows event logs
+winlogbeat.event_logs:
+  - name: Application
+    ignore_older: 168h
+
+  - name: System
+    ignore_older: 168h
+
+  - name: Microsoft-Windows-HardwareEvents
+    ignore_older: 168h
+    level: critical
+
+# Send Winlogbeat data to Logstash
+output.logstash:
+  hosts: ["<LOGSTASH_SERVER_IP>:5044"]
+
+# Logging configuration
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: C:\ProgramData\winlogbeat\Logs
+  name: winlogbeat
+  keepfiles: 7

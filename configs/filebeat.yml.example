@@ -1,0 +1,26 @@
+# Filebeat configuration
+
+# Name of the Filebeat instance
+name: ict341-filebeat
+
+# Read a sample access log file
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /home/ubuntu/access.log
+
+# Send Filebeat data to Logstash
+output.logstash:
+  hosts: ["<LOGSTASH_SERVER_IP>:5044"]
+
+# Enable Kibana dashboard setup
+setup.dashboards.enabled: true
+setup.kibana.host: "http://<KIBANA_SERVER_IP>:5601"
+
+# Load Filebeat module configurations
+filebeat.config.modules:
+  path: /etc/filebeat/modules.d/*.yml
+
+# Logging level
+logging.level: debug

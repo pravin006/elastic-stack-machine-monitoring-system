@@ -1,0 +1,26 @@
+# Metricbeat configuration
+
+# Load module configurations from the modules.d directory
+metricbeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+# Optional Kibana setup
+# Used only when loading dashboards into Kibana
+setup.kibana:
+  host: "<KIBANA_SERVER_IP>:5601"
+
+# Elasticsearch output is disabled because this setup sends data to Logstash
+# output.elasticsearch:
+#   hosts: ["localhost:9200"]
+
+# Send Metricbeat data to Logstash
+output.logstash:
+  hosts: ["<LOGSTASH_SERVER_IP>:5044"]
+
+# Add host metadata to events
+processors:
+  - add_host_metadata: ~
+
+# Optional logging level
+# logging.level: info
